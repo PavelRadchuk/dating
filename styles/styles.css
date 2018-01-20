@@ -1,0 +1,13 @@
+body{
+    padding-top: 100px;
+}
+.image{
+    border-radius: 10px;
+}
+p.quote {
+    font-style: italic;
+}
+#bold {
+    font-weight: bold;
+}
+
