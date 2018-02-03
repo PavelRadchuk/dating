@@ -25,9 +25,15 @@ $view = new View;
 echo $view->render('pages/information.html');
 });
 
-$f3 -> route('GET /profile', function() {
+$f3 -> route('GET /profile', function($f3) {
     $view = new View;
     echo $view->render('views/profile.html');
 });
+
+$f3 -> route('GET /interests', function($f3) {
+    $view = new View;
+    echo $view->render('views/interests.html');
+});
+
 //run Fat-Free
 $f3->run();
