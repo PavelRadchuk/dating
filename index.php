@@ -20,10 +20,14 @@ $view = new view();
 echo $view->render('pages/home.html');
 });
 
-$f3 -> route('GET /personal-information', function() {
+$f3 -> route('GET/POST /information', function($f3) {
 $view = new View;
-echo $view->render('views/personal-information.html');
+echo $view->render('pages/information.html');
 });
 
+$f3 -> route('GET /profile', function() {
+    $view = new View;
+    echo $view->render('views/profile.html');
+});
 //run Fat-Free
 $f3->run();
