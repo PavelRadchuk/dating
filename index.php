@@ -11,6 +11,10 @@ session_start();
 //require the autoload file
 require_once ('vendor/autoload.php');
 
+session_start();  
+
+include('model/validate.php');
+
 //create an instance of the Base class
 $f3 = Base::instance();
 
@@ -24,7 +28,7 @@ $f3->set('outdoors', array( "hiking", "biking", "swimming", "collecting", "walki
 
 $f3->route('GET /', function() {
             $template = new Template();
-            echo $template->render('pages/home.html');
+            echo $template->render('/pages/home.html');
         }
     );
 
@@ -40,7 +44,34 @@ $f3->route('GET /', function() {
                 $_SESSION['age'] = $age;
                 $_SESSION['gender'] = $gender;
                 $_SESSION['phone'] = $phone;
-                include('model/validate.php');
+                $_SESSION['premium'] = $premium;
+                 if(!validName($first)){ 
+                    $errors['first'] = "Please enter a first name."; 
+                } 
+                if(!validName($last)){ 
+                    $errors['last'] = "Please enter a last name."; 
+                } 
+                if(!validAge($age)){ 
+                    $errors['age'] = "The age requirement is 18 or older."; 
+                } 
+                if(!validPhone($phone)){ 
+                errors['phone'] = "Please enter Numbers and dashes only."; 
+                }
+                // create PremiumMember object if selected 
+                if(isset($_POST['premium'])) { 
+                    $member = new PremiumMember($_SESSION['first'],
+                    $_SESSION['last'], $_SESSION['age'], 
+                    $_SESSION['member'], $_SESSION['phone']); 
+                    $_SESSION['member'] = $member; 
+                } 
+                    // create Member object if not selected 
+                else { 
+                    $member = new Member($_SESSION['first'],
+                    $_SESSION['last'], $_SESSION['age'], 
+                    $_SESSION['member'], $_SESSION['phone']); 
+                    $_SESSION['member'] = $member; 
+                } 
+                $success = sizeof($errors) == 0; 
                 $f3->set('first', $first);
                 $f3->set('last', $last);
                 $f3->set('age', $age);
@@ -50,7 +81,7 @@ $f3->route('GET /', function() {
                 $f3->set('success', $success);
             }
             $template = new Template();
-            echo $template->render('views/information.html');
+            echo $template->render('pages/form1.html');
             if($success) {
                 $f3->reroute('/profile');
             }
