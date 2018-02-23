@@ -17,32 +17,34 @@
             <form class="form" action="" method="post">
                 <label class="form-control-label">Indoor Interests</label>
                 <div class="form-check">
-                    <repeat group = "{{ @indoors }}" value = "{{ @activity }}">
+                    <?php foreach (($indoors?:[]) as $activity): ?>
                         <div class="col-3 float-left">
                             <label class="form-check-label"><input class="form-check-label" type="checkbox" name="indoors[]"
-                                value="{{ @activity }}"
-                                <check if="!is_null({{ @indoor }})">
-                                    <check if="in_array({{ @activity }}, {{ @indoor }})">checked</check>
-                                </check>>
-                                {{ @activity }}
+                                value="<?= ($activity) ?>"
+                                <?php if (!is_null( $indoor )): ?>
+                                    <?php if (in_array( $activity ,  $indoor )): ?>checked<?php endif; ?>
+                                <?php endif; ?>>
+                                <?= ($activity)."
+" ?>
                             </label>
                         </div>
-                    </repeat>
+                    <?php endforeach; ?>
                 </div>
 
                 <label class="form-control-label">Outdoor Interests</label>
                 <div class="form-check">
-                    <repeat group = "{{ @outdoors }}" value = "{{ @activity }}">
+                    <?php foreach (($outdoors?:[]) as $activity): ?>
                         <div class="col-3 float-left">
                             <label class="form-check-label"><input class="form-check-label" type="checkbox" name="outdoors[]"
-                                value="{{ @activity }}"
-                                <check if="!is_null({{ @outdoor }})">
-                                    <check if="in_array({{ @activity }}, {{ @outdoor }})">checked</check>
-                                </check>>
-                                {{ @activity }}
+                                value="<?= ($activity) ?>"
+                                <?php if (!is_null( $outdoor )): ?>
+                                    <?php if (in_array( $activity ,  $outdoor )): ?>checked<?php endif; ?>
+                                <?php endif; ?>>
+                                <?= ($activity)."
+" ?>
                             </label>
                         </div>
-                    </repeat>
+                    <?php endforeach; ?>
                 </div>
 
                 <button id="next" class="btn btn-primary" type="submit" name="submit">Next ></button>

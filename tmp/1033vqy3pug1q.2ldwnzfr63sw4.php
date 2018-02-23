@@ -14,23 +14,23 @@
 
             <div class="row">
                 <div id="summary" class="col-6">
-                    <p>Name: {{ @first }}  {{ @last }}</p>
-                    <p>Gender: {{ @gender }}</p>
-                    <p>Age: {{ @age }}</p>
-                    <p>Phone: {{ @phone }}</p>
-                    <p>Email: {{ @email }}</p>
-                    <p>State: {{ @state }}</p>
-                    <p>Seeking: {{ @seeking }}</p>
-                    <check if="{{ @member }} instanceof PremiumMember"><p>Interests:
-                        <repeat group = "{{ @indoor }}" value = "{{ @activity }}">{{ @activity }}  </repeat>
-                        <repeat group = "{{ @outdoor }}" value = "{{ @activity }}">{{ @activity }}  </repeat>
-                    </p></check>
+                    <p>Name: <?= ($first) ?>  <?= ($last) ?></p>
+                    <p>Gender: <?= ($gender) ?></p>
+                    <p>Age: <?= ($age) ?></p>
+                    <p>Phone: <?= ($phone) ?></p>
+                    <p>Email: <?= ($email) ?></p>
+                    <p>State: <?= ($state) ?></p>
+                    <p>Seeking: <?= ($seeking) ?></p>
+                    <?php if ($member  instanceof PremiumMember): ?><p>Interests:
+                        <?php foreach (($indoor?:[]) as $activity): ?><?= ($activity) ?>  <?php endforeach; ?>
+                        <?php foreach (($outdoor?:[]) as $activity): ?><?= ($activity) ?>  <?php endforeach; ?>
+                    </p><?php endif; ?>
                 </div>
 
                 <div class="col-6">
                     <img src="https://image.flaticon.com/icons/svg/16/16480.svg" alt="default profile pic">
                     <h4 id="bioHeader">Biography</h4>
-                    <p>{{ @bio }}</p>
+                    <p><?= ($bio) ?></p>
                 </div>
             </div>
 

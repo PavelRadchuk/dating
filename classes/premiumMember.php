@@ -2,6 +2,7 @@
 class PremiumMember extends Member{
     private $_indoorInterests = array();
     private $_outdoorInterests = array();
+
     /**
      * get the array of indoor interests
      * @return array indoor interests
@@ -9,6 +10,7 @@ class PremiumMember extends Member{
     function getIndoorInterests(){
         return $this->_indoorInterests;
     }
+
     /**
      * set the indoor interests selected
      * @param indoorInterests indoor interests
@@ -17,6 +19,7 @@ class PremiumMember extends Member{
     function setIndoorInterests($indoorInterests){
         $this->_indoorInterests = $indoorInterests;
     }
+
     /**
      * get the array of outdoor interests
      * @return array outdoor interests
@@ -24,6 +27,7 @@ class PremiumMember extends Member{
     function getOutdoorInterests(){
         return $this->_outdoorInterests;
     }
+
     /**
      * set the outdoor interests selected
      * @param outdoorInterests indoor interests

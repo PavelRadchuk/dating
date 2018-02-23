@@ -14,29 +14,30 @@
 
             <h1 class="text-center">My Dating Website</h1>
             <form action="information.html" method="post">
-            <p>
-                Welcome to the web's most successful dating website. At
-                <span id="bold"> My Dating Website</span> you'll meet another like minded indiviuals. We have the
-                highest success rate of couples on the web. User's are matched by
-                interest and location. Find out why so many others have found love on
-                our site!
-            </p>
+                <p>
+                    Welcome to the web's most successful dating website. At
+                    <span id="bold"> My Dating Website</span> you'll meet another like minded indiviuals. We have the
+                    highest success rate of couples on the web. User's are matched by
+                    interest and location. Find out why so many others have found love on
+                    our site!
+                </p>
 
-            <h3 class="text-center">
-                Hear what our users are saying about us.
-            </h3>
+                <h3 class="text-center">
+                    Hear what our users are saying about us.
+                </h3>
 
-            <hr>
-            <p class="comment">"I met the love of my life after only a month!" - Andrea</p>
+                <hr>
+                <p class="comment">"I met the love of my life after only a month!" - Andrea</p>
 
-            <p class="comment">"It was so easy to set up and profile and start meeting people.
-                I didn't realize how many others were for love in my area." - John Smith</p>
+                <p class="comment">"It was so easy to set up and profile and start meeting people.
+                    I didn't realize how many others were for love in my area." - John Smith</p>
 
-            <p class="comment">"Just try it! You'll never be the same!" - Sarah</p>
-            <hr>
-            <div class="text-center">
-                <button type="submit" class="btn btn-primary">Create a Profile!</button>
-            </div>
+                <p class="comment">"Just try it! You'll never be the same!" - Sarah</p>
+                <hr>
+                <div class="text-center">
+                    <p><a class="btn btn-lg btn-success" href="./personal" role="button">Sign up today</a></p>
+
+                </div>
             </form>
         </div>
 

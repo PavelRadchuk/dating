@@ -19,14 +19,14 @@
                 <div class="col-6">
                     <label class="form-control-label" for="email">Email</label>
                     <input class="form-control" type="text" id="email" name="email"
-                            value="{{ @email }}">
+                            value="<?= ($email) ?>">
 
                     <label class="form-control-label" for="state">State</label>
                     <select class="form-control" type="text" id="state" name="state">
-                        <repeat group = "{{ @states }}" value = "{{ @stateOption }}">
-                            <option <check if="{{ @stateOption == @state }}">selected</check>>
-                                {{ @stateOption }}</option>
-                        </repeat>
+                        <?php foreach (($states?:[]) as $stateOption): ?>
+                            <option <?php if ($stateOption == $state): ?>selected<?php endif; ?>>
+                                <?= ($stateOption) ?></option>
+                        <?php endforeach; ?>
                     </select>
 
                     <label class="form-control-label">Seeking</label>
@@ -34,7 +34,7 @@
                         <div class="form-check form-check-inline">
                             <label class="form-check-label">
                                 <input class="form-check-input" type="radio" name="seeking" value="male"
-                                        <check if="{{ @seeking == 'male' }}">checked</check>>
+                                        <?php if ($seeking == 'male'): ?>checked<?php endif; ?>>
                                 &nbsp;&nbsp;Male
                             </label>
                         </div>
@@ -42,7 +42,7 @@
                         <div class="form-check form-check-inline">
                             <label class="form-check-label">
                                 <input class="form-check-input" type="radio" name="seeking" value="female"
-                                        <check if="{{ @seeking == 'female' }}">checked</check>>
+                                        <?php if ($seeking == 'female'): ?>checked<?php endif; ?>>
                                 &nbsp;&nbsp;Female
                             </label>
                         </div>
@@ -51,7 +51,7 @@
 
                 <div class="col-6">
                     <label class="form-control-label" for="bio">Biography</label>
-                    <textarea class="form-control" type="text" id="bio" name="bio" rows=7>{{ @bio }}</textarea>
+                    <textarea class="form-control" type="text" id="bio" name="bio" rows=7><?= ($bio) ?></textarea>
                 </div>
             </div>
 
