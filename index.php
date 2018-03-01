@@ -4,7 +4,7 @@ require_once('vendor/autoload.php');
 
 //Start the session
 session_start();
-//
+
 include('model/validate.php');
 
 // create instance of base class
@@ -185,6 +185,8 @@ $f3->route('GET|POST /summary', function($f3, $params) {
 
     $template = new Template();
     echo $template->render('pages/results.html');
+    $database = new database();
+    $database->message();
 });
 
 // run fat free

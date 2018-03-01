@@ -15,7 +15,7 @@
         if (is_numeric($phone) || (strpos($phone, "-") && !ctype_alpha($phone))){
             if (strpos($phone, "-") && (strlen($phone) == 12)){
                 return true;
-            }
+            } 
             if (strlen($phone) == 10){
                 return true;
             }

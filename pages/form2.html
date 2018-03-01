@@ -12,7 +12,7 @@
         <div class="container">
 
             <h2>Profile</h2>
-            <hr>
+            <hr> 
 
             <form class="form" action="" method="post">
             <div class="row">

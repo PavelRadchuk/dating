@@ -25,7 +25,7 @@
                         <?php foreach (($indoor?:[]) as $activity): ?><?= ($activity) ?>  <?php endforeach; ?>
                         <?php foreach (($outdoor?:[]) as $activity): ?><?= ($activity) ?>  <?php endforeach; ?>
                     </p><?php endif; ?>
-                </div>
+                </div> 
 
                 <div class="col-6">
                     <img src="https://image.flaticon.com/icons/svg/16/16480.svg" alt="default profile pic">

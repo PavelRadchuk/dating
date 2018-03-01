@@ -32,7 +32,8 @@ class Member{
      * get the user's first name
      * @return string first name
      */
-    function getFname(){
+    function getFname()
+    {
         return $this->name;
     }
 
@@ -41,7 +42,8 @@ class Member{
      * @param $fname the first name
      * @return void
      */
-    function setFname($fname){
+    function setFname($fname)
+    {
         $this->fname = $fname;
     }
 
@@ -49,7 +51,8 @@ class Member{
      * get the user's last name
      * @return string last name
      */
-    function getLname(){
+    function getLname()
+    {
         return $this->lname;
     }
 
@@ -58,7 +61,8 @@ class Member{
      * @param $fname last name
      * @return void
      */
-    function setLname($lname){
+    function setLname($lname)
+    {
         $this->lname = $lname;
     }
 
@@ -66,7 +70,8 @@ class Member{
      * get the user's age
      * @return string age
      */
-    function getAge(){
+    function getAge()
+    {
         return $this->age;
     }
 
@@ -75,7 +80,8 @@ class Member{
      * @param $fname age
      * @return void
      */
-    function setAge($age){
+    function setAge($age)
+    {
         $this->age = $age;
     }
 
@@ -83,7 +89,8 @@ class Member{
      * get the user's gender
      * @return string gender
      */
-    function getGender(){
+    function getGender()
+    {
         return $this->gender;
     }
 
@@ -92,7 +99,8 @@ class Member{
      * @param $fname gender
      * @return void
      */
-    function setGender($gender){
+    function setGender($gender)
+    {
         $this->gender = $gender;
     }
 
@@ -100,7 +108,8 @@ class Member{
      * get the user's phone number
      * @return string phone number
      */
-    function getPhone(){
+    function getPhone()
+    {
         return $this->phone;
     }
 
@@ -109,7 +118,8 @@ class Member{
      * @param $fname phone number
      * @return void
      */
-    function setPhone($phone){
+    function setPhone($phone)
+    {
         $this->phone = $phone;
     }
 
@@ -117,7 +127,8 @@ class Member{
      * get the user's email
      * @return string email
      */
-    function getEmail(){
+    function getEmail()
+    {
         return $this->email;
     }
 
@@ -126,7 +137,8 @@ class Member{
      * @param $fname email
      * @return void
      */
-    function setEmail($email){
+    function setEmail($email)
+    {
         $this->email = $email;
     }
 
@@ -134,7 +146,8 @@ class Member{
      * get the user's home state
      * @return string state
      */
-    function getState(){
+    function getState()
+    {
         return $this->state;
     }
 
@@ -143,7 +156,8 @@ class Member{
      * @param $fname state
      * @return void
      */
-    function setState($state){
+    function setState($state)
+    {
         $this->state = $state;
     }
 
@@ -151,7 +165,8 @@ class Member{
      * get the gender the user is seeking
      * @return string gender user is seeking
      */
-    function getSeeking(){
+    function getSeeking()
+    {
         return $this->seeking;
     }
 
@@ -160,7 +175,8 @@ class Member{
      * @param $fname gender use is seeking
      * @return void
      */
-    function setSeeking($seeking){
+    function setSeeking($seeking)
+    {
         $this->seeking = $seeking;
     }
 
@@ -168,7 +184,8 @@ class Member{
      * get the user's bio
      * @return string bio
      */
-    function getBio(){
+    function getBio()
+    {
         return $this->bio;
     }
 
@@ -177,7 +194,8 @@ class Member{
      * @param $fname bio
      * @return void
      */
-    function setBio($bio){
+    function setBio($bio)
+    {
         $this->bio = $bio;
     }
 }
