@@ -1,4 +1,19 @@
 <?php
+/* CREATE TABLE Members (
+    member_id INT(11) PRIMARY KEY AUTO_INCREMENT,
+    fname VARCHAR(20),
+    lname VARCHAR(20),
+    age int(3),
+    gender enum('male', 'female'),
+    phone varchar(10),
+    email VARCHAR(25),
+    state enum('Washington', 'Idaho', 'California', 'Oregon')
+    seeking enum('male','female'),
+    bio TEXT,
+    premium TINYINT,
+    image Text,
+    interests Text
+) */
 require '/home/pradchuk/config.php';
 class Database
 {
@@ -15,6 +30,22 @@ class Database
             echo $e->getMessage();
         }
     }
+    /**
+     * inserts member into the database
+     * @param $fname first name
+     * @param $lname last name
+     * @param $age age
+     * @param $gender gender
+     * @param $phone phone number
+     * @param $email email
+     * @param $state state
+     * @param $seeking gender that is seeking
+     * @param $bio bio
+     * @param $premium 1 if true, 0 if false
+     * @param $image images if they exist
+     * @param $interests list of interests
+     * @return void
+     */
     function insertMember($fname, $lname, $age, $gender, $phone, $email, $state, $seeking, $bio, $premium, $image, $interests)
     {
         $sql= "INSERT INTO Members(fname, lname, age, gender, phone, email, state, seeking, bio, premium, image, interests)
