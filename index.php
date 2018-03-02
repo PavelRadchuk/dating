@@ -182,11 +182,15 @@ $f3->route('GET|POST /summary', function($f3, $params) {
     $f3->set('outdoor', $_SESSION['outdoor']);
     $f3->set('bio', $_SESSION['bio']);
     $f3->set('member', $member);
-
+    if($member instanceof PremiumMember) {
+       $member = 1;
+    }else{
+       $member = 0;
+    }
     $template = new Template();
     echo $template->render('pages/results.html');
-    $database = new database();
-    $database->message();
+    $database = new Database();
+    $database->insertMember($_SESSION['first'], $_SESSION['last'], $_SESSION['age'], $_SESSION['gender'], $_SESSION['phone'], $_SESSION['email'], $_SESSION['state'], $_SESSION['seeking'], $_SESSION['bio'], $member, null, implode(", ", $_SESSION['indoor']).", ".implode(", ", $_SESSION['outdoor']);
 });
 
 // run fat free

@@ -1,6 +1,6 @@
 <?php
 require '/home/pradchuk/config.php';
-class database
+class Database
 {
     protected $dbh;
     /**
@@ -11,14 +11,13 @@ class database
     {
         try {
             $this->dbh = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-            echo "connected to database!";
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
     }
-    function insertMember()
+    function insertMember($fname, $lname, $age, $gender, $phone, $email, $state, $seeking, $bio, $premium, $image, $interests)
     {
-        $sql= "INSERT INTO members(fname, lname, age, gender, phone, email, state, seeking, bio, premium, image, interests)
+        $sql= "INSERT INTO Members(fname, lname, age, gender, phone, email, state, seeking, bio, premium, image, interests)
         VALUES(:fname, :lname, :age, :gender, :phone, :email, :state, :seeking, :bio, :premium, :image, :interests)";
 
         //Prepare the statement
@@ -41,7 +40,7 @@ class database
         //Execute
         $statement->execute();
         $id = $this->dbh->lastInsertId();
-        echo "<p>Pet $id inserted successfully.</p>";
+        echo "<p>$id inserted successfully.</p>";
 
     }
 }
