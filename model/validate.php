@@ -1,46 +1,32 @@
 <?php
-
-    // name must be alphabetic
-    function validName($name){
-        return ctype_alpha($name);
-    }
-
-    // must be at least 18
-    function validAge($age){
-        return $age >= 18;
-    }
-
-    // only numbers and dashes (10 digits)
-    function validPhone($phone){
-        if (is_numeric($phone) || (strpos($phone, "-") && !ctype_alpha($phone))){
-            if (strpos($phone, "-") && (strlen($phone) == 12)){
-                return true;
-            } 
-            if (strlen($phone) == 10){
-                return true;
-            }
+function validName($name) {
+    return ctype_alpha($name);
+}
+function validAge($age) {
+    return (is_numeric($age) && $age >= 18);
+}
+function validPhone($phone) {
+    $phone = str_replace('-', '', $phone);
+    $phone = str_replace(' ', '', $phone);
+    $phone = str_replace('(', '', $phone);
+    $phone = str_replace(')', '', $phone);
+    return (is_numeric($phone) && (strlen($phone) > 9 && (strlen($phone) < 16)));
+}
+function validOutdoor($listOfOutdoor) {
+    $validList = array('hiking', 'biking', 'swimming', 'collecting', 'walking', 'climbing');
+    foreach ($listOfOutdoor as $activity) {
+        if (!in_array($activity, $validList)) {
+            return false;
         }
-        return false;
     }
-
-    // must be one of the checkboxes
-    function validIndoor($activities) {
-        global $f3;
-        $inside = true;
-        foreach ($activities as $activity)
-        {
-            $inside = in_array($activity, $f3->get('indoors'));
+    return true;
+}
+function validIndoor($listOfIndoor) {
+    $validList = array('tv', 'movies', 'cooking', 'board games', 'puzzles', 'reading', 'playing cards', 'video games');
+    foreach ($listOfIndoor as $activity) {
+        if (!in_array($activity, $validList)) {
+            return false;
         }
-        return $inside;
     }
-
-    // must be one of the checkboxes
-    function validOutdoor($activities) {
-        global $f3;
-        $outside = true;
-        foreach ($activities as $activity)
-        {
-            $outside = in_array($activity, $f3->get('outdoors'));
-        }
-        return $outside;
-    }
+    return true;
+}

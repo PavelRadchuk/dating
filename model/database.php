@@ -4,11 +4,11 @@
     fname VARCHAR(20),
     lname VARCHAR(20),
     age int(3),
-    gender enum('male', 'female'),
+    gender VARCHAR(8),
     phone varchar(10),
     email VARCHAR(25),
     state enum('Washington', 'Idaho', 'California', 'Oregon')
-    seeking enum('male','female'),
+    seeking VARCHAR(8),
     bio TEXT,
     premium TINYINT,
     image Text,
@@ -19,7 +19,6 @@ class Database
 {
     protected $dbh;
     /**
-     * Member constructor.
      * connecting to database
      */
     function __construct()
@@ -41,20 +40,17 @@ class Database
      * @param $state state
      * @param $seeking gender that is seeking
      * @param $bio bio
-     * @param $premium 1 if true, 0 if false
-     * @param $image images if they exist
      * @param $interests list of interests
      * @return void
      */
     function insertMember($fname, $lname, $age, $gender, $phone, $email, $state, $seeking, $bio, $premium, $image, $interests)
     {
-        $sql= "INSERT INTO Members(fname, lname, age, gender, phone, email, state, seeking, bio, premium, image, interests)
-        VALUES(:fname, :lname, :age, :gender, :phone, :email, :state, :seeking, :bio, :premium, :image, :interests)";
-
-        //Prepare the statement
-        $statement = $this->dbh->prepare($sql);
-
-        //Bind the parameters
+        $dbh = $this->dbh;
+        // define the query
+        $sql = "INSERT INTO Members(fname, lname, age, gender, phone, email, state, seeking, bio, premium, image, interests)
+          VALUES (:fname, :lname, :age, :gender, :phone, :email, :state, :seeking, :bio, :premium, :image, :interests)";
+        // prepare the statement
+        $statement = $dbh->prepare($sql);
         $statement->bindParam(':fname', $fname, PDO::PARAM_STR);
         $statement->bindParam(':lname', $lname, PDO::PARAM_STR);
         $statement->bindParam(':age', $age, PDO::PARAM_INT);
@@ -67,11 +63,36 @@ class Database
         $statement->bindParam(':premium', $premium, PDO::PARAM_INT);
         $statement->bindParam(':image', $image, PDO::PARAM_STR);
         $statement->bindParam(':interests', $interests, PDO::PARAM_STR);
-
-        //Execute
+        // execute
         $statement->execute();
-        $id = $this->dbh->lastInsertId();
-        echo "<p>$id inserted successfully.</p>";
-
+        $id = $dbh->lastInsertId();
+    }
+    function getMembers()
+    {
+        $dbh = $this->dbh;
+        // Define the query
+        $sql = "SELECT * FROM Members ORDER BY lname";
+        // Prepare the statement
+        $statement = $dbh->prepare($sql);
+        // Execute the statement
+        $statement->execute();
+        // Process the result
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($result as $row) {
+            echo "<tr><td>" . $row['member_id'] . "</td>";
+            echo "<td>" . $row['fname'] . " " . $row['lname'] . "</td>";
+            echo "<td>" . $row['age'] . "</td>";
+            echo "<td>" . $row['phone'] . "</td>";
+            echo "<td>" . $row['email'] . "</td>";
+            echo "<td>" . $row['state'] . "</td>";
+            echo "<td>" . $row['gender'] . "</td>";
+            echo "<td>" . $row['seeking'] . "</td>";
+            if ($row['premium'] == 1) {
+                echo "<td><input id='checkBox' type='checkbox' checked></td>";
+            } else {
+                echo "<td><input id='checkBox' type='checkbox'></td>";
+            }
+            echo "<td>" . $row['interests'] . "</td></tr>";
+        }
     }
 }

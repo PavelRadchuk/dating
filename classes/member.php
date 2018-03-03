@@ -44,7 +44,11 @@ class Member{
      */
     function setFname($fname)
     {
-        $this->fname = $fname;
+        //check if alphabetic
+        $result = ctype_alpha($fname);
+        if($result) {
+            $this->fname = $fname;
+        }
     }
 
     /**
@@ -82,7 +86,10 @@ class Member{
      */
     function setAge($age)
     {
-        $this->age = $age;
+        //check if numeric
+        if (is_numeric($age)) {
+            $this->age = $age;
+        }
     }
 
     /**
@@ -120,7 +127,10 @@ class Member{
      */
     function setPhone($phone)
     {
-        $this->phone = $phone;
+        //check if the phone number is 10 numbers
+        if (strlen($phone) == 10){
+            $this->phone = $phone;
+        }
     }
 
     /**

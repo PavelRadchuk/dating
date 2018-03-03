@@ -1,10 +1,10 @@
 {
-  "name": "pradchuk/hello",
+  "name": "pradchuk/dating",
   "authors":[
-    {
-      "name": "Pavel Radchuk",
-      "email": "pradchuk2@mail.greenriver.edu"
-    }
+  {
+    "name": "Pavel Radchuk",
+    "email": "pradchuk2@mail.greenriver.edu"
+  }
   ],
   "require":{
     "bcosca/fatfree-core": "dev-master"

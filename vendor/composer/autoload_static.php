@@ -25,6 +25,7 @@ class ComposerStaticInit8dbb41cb533045a2b6b220886376e583
         'DB\\SQL' => __DIR__ . '/..' . '/bcosca/fatfree-core/db/sql.php',
         'DB\\SQL\\Mapper' => __DIR__ . '/..' . '/bcosca/fatfree-core/db/sql/mapper.php',
         'DB\\SQL\\Session' => __DIR__ . '/..' . '/bcosca/fatfree-core/db/sql/session.php',
+        'Database' => __DIR__ . '/../..' . '/model/database.php',
         'F3' => __DIR__ . '/..' . '/bcosca/fatfree-core/f3.php',
         'ISO' => __DIR__ . '/..' . '/bcosca/fatfree-core/base.php',
         'Image' => __DIR__ . '/..' . '/bcosca/fatfree-core/image.php',
@@ -50,7 +51,6 @@ class ComposerStaticInit8dbb41cb533045a2b6b220886376e583
         'Web\\OAuth2' => __DIR__ . '/..' . '/bcosca/fatfree-core/web/oauth2.php',
         'Web\\OpenID' => __DIR__ . '/..' . '/bcosca/fatfree-core/web/openid.php',
         'Web\\Pingback' => __DIR__ . '/..' . '/bcosca/fatfree-core/web/pingback.php',
-        'database' => __DIR__ . '/../..' . '/model/database.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

@@ -24,6 +24,7 @@ return array(
     'DB\\SQL' => $vendorDir . '/bcosca/fatfree-core/db/sql.php',
     'DB\\SQL\\Mapper' => $vendorDir . '/bcosca/fatfree-core/db/sql/mapper.php',
     'DB\\SQL\\Session' => $vendorDir . '/bcosca/fatfree-core/db/sql/session.php',
+    'Database' => $baseDir . '/model/database.php',
     'F3' => $vendorDir . '/bcosca/fatfree-core/f3.php',
     'ISO' => $vendorDir . '/bcosca/fatfree-core/base.php',
     'Image' => $vendorDir . '/bcosca/fatfree-core/image.php',
@@ -49,5 +50,4 @@ return array(
     'Web\\OAuth2' => $vendorDir . '/bcosca/fatfree-core/web/oauth2.php',
     'Web\\OpenID' => $vendorDir . '/bcosca/fatfree-core/web/openid.php',
     'Web\\Pingback' => $vendorDir . '/bcosca/fatfree-core/web/pingback.php',
-    'database' => $baseDir . '/model/database.php',
 );

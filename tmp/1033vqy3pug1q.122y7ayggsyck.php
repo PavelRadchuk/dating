@@ -11,9 +11,14 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-6 " style="padding-left: 50px">
+            <nav class='navbar navbar-toggleable-sm navbar-light' id="nav">
 
-            <h1 class="text-center">My Dating Website</h1>
-            <form action="information.html" method="post">
+                <a class="navbar-brand" href="">My Dating Website</a>
+
+
+                <a class="nav-link" href="admin">Admin </a>
+
+            </nav>
                 <p>
                     Welcome to the web's most successful dating website. At
                     <span id="bold"> My Dating Website</span> you'll meet another like minded indiviuals. We have the
@@ -26,7 +31,7 @@
                     Hear what our users are saying about us.
                 </h3>
 
-                <hr>
+                <hr> 
                 <p class="comment">"I met the love of my life after only a month!" - Andrea</p>
 
                 <p class="comment">"It was so easy to set up and profile and start meeting people.
@@ -38,7 +43,6 @@
                     <p><a class="btn btn-lg btn-success" href="./personal" role="button">Sign up today</a></p>
 
                 </div>
-            </form>
         </div>
 
         <div class="col-lg-6">

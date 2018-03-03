@@ -62,6 +62,7 @@ $f3->route('GET|POST /personal', function($f3, $params) {
         $f3->set('age', $age);
         $f3->set('gender', $gender);
         $f3->set('phone', $phone);
+        $f3->set('premium', $premium);
         $f3->set('errors', $errors);
         $f3->set('success', $success);
         $f3->set('member', $member);
@@ -103,7 +104,7 @@ $f3->route('GET|POST /profile', function($f3, $params) {
     if($success) {
         // go to interests if premium member
         if($member instanceof PremiumMember) {
-           $f3->reroute('/interests');
+            $f3->reroute('/interests');
         }
         // skip to summary if not premium
         else {
@@ -113,8 +114,8 @@ $f3->route('GET|POST /profile', function($f3, $params) {
 });
 //Define a form 3 route
 $f3->route('GET|POST /interests', function($f3, $params) {
-    $member = $_SESSION['member'];
     $errors = array();
+    $member = $_SESSION['member'];
     if(isset($_POST['submit'])){
         $indoor = $_POST['indoors'];
         $outdoor = $_POST['outdoors'];
@@ -141,7 +142,6 @@ $f3->route('GET|POST /interests', function($f3, $params) {
         $f3->reroute('/summary');
     }
 });
-// define summary route
 $f3->route('GET|POST /summary', function($f3, $params) {
     $member = $_SESSION['member'];
     $f3->set('first', $_SESSION['first']);
@@ -156,21 +156,18 @@ $f3->route('GET|POST /summary', function($f3, $params) {
     $f3->set('outdoor', $_SESSION['outdoor']);
     $f3->set('bio', $_SESSION['bio']);
     $f3->set('member', $member);
-    $fname = $_SESSION['first'];
-    $interests = "";
-    $image = "";
+    $interests = "null";
+    $image = "null";
     $premium = 0;
     if($member instanceof PremiumMember) {
-       $interests = implode(", ", $member->getIndoorInterests()).", ".implode(", ", $member->getOutdoorInterests());
-       $premium = 1;
+        $interests = implode(", ", $member->getIndoorActivities()).", ".implode(", ", $member->getOutdoorActivities());
+        $premium = 1;
     }
-    // create Member table using its object
-    $template = new Template();
-    echo $template->render('pages/results.html');
     $database = new Database();
-    $database->insertMember($fname, $_SESSION['last'], $_SESSION['age'], $_SESSION['gender'],
-        $_SESSION['phone'], $_SESSION['email'], $_SESSION['state'], $_SESSION['seeking'],
-        $_SESSION['bio'], $premium, $image, $interests);
+    $database->insertMember($member->getFname(), $member->getLname(), $member->getAge(), $member->getGender(), $member->getPhone(),
+        $member->getEmail(), $member->getState(), $member->getSeeking(), $member->getBio(), $premium, $image, $interests);
+    $template = new Template();
+    echo $template->render('pages/summary.html');
 });
 // define member list route
 $f3->route('GET /admin', function($f3, $params) {
@@ -179,5 +176,6 @@ $f3->route('GET /admin', function($f3, $params) {
     $template = new Template();
     echo $template->render('pages/admin.html');
 });
+
 // run fat free
 $f3->run();
